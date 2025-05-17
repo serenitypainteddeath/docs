@@ -1,33 +1,18 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Başlangıç"
+description: "Bu kısımda API işleyişinin örnekleri bulunmaktadır."
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  Eğer kullanıcı adı ve parolaya sahipseniz aşağıdaki adımlarla devam edebilirsiniz.
 </Note>
-
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Matbaa API endpointlerinin kullanımı için kimlik doğrulama gereklidir. Bu nedenle, tüm isteklerde JSON Web Token (JWT) içermelidir. JWT, taraflar arasında bilgiyi güvenli ve kompakt bir şekilde JSON formatında iletmek için kullanılan açık bir standarttır (RFC 7519).
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+API’yi kullanmaya başlamadan önce, temel kimlik doğrulaması (basicAuth) ile `/login` endpoint’ine GET isteği yaparak JWT token’ı almanız gerekir. Bu token, diğer tüm API çağrılarında kullanılacaktır.
+
+``` cURL
+curl -X GET "https://api.tunamatbaacilik.com.tr/login?{username}&password={password}"
 ```
