@@ -45,12 +45,11 @@
             ]
           },
           {
-            "group": "Endpoints",
+            "group": "İstekler",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "tuna-api/endpoint/getPalet",
+              "tuna-api/endpoint/getBox",
+              "tuna-api/endpoint/getbyDate"
             ]
           }
         ]
