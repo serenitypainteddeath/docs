@@ -1,0 +1,18 @@
+---
+title: "Başlangıç"
+description: "Bu kısımda API işleyişinin örnekleri bulunmaktadır."
+---
+
+<Note>
+  Eğer kullanıcı adı ve parolaya sahipseniz aşağıdaki adımlarla devam edebilirsiniz.
+</Note>
+
+## Authentication
+
+Matbaa API endpointlerinin kullanımı için kimlik doğrulama gereklidir. Bu nedenle, tüm isteklerde JSON Web Token (JWT) içermelidir. JWT, taraflar arasında bilgiyi güvenli ve kompakt bir şekilde JSON formatında iletmek için kullanılan açık bir standarttır (RFC 7519).
+
+API’yi kullanmaya başlamadan önce, temel kimlik doğrulaması (basicAuth) ile `/login` endpoint’ine GET isteği yaparak JWT token’ı almanız gerekir. Bu token, diğer tüm API çağrılarında kullanılacaktır.
+
+```cURL cURL
+curl -X GET "https://api.tunamatbaacilik.com.tr/login?{username}&password={password}"
+```
