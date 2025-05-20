@@ -10,27 +10,11 @@
   },
   "servers": [
     {
-      "url": "https://api.tunamatbaacilik.com.tr/v1",
+      "url": "https://api.tunamatbaacilik.com.tr",
       "description": "Production API"
-    },
-    {
-      "url": "https://staging-api.tunamatbaacilik.com.tr/v1",
-      "description": "Staging API"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
     }
   ],
   "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      }
-    },
     "schemas": {
       "Error": {
         "type": "object",
@@ -45,31 +29,32 @@
           }
         }
       },
-      "Palet": {
+      "PaletResponse": {
         "type": "object",
+        "xml": {
+          "name": "palet"
+        },
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
-            "description": "Palet benzersiz tanımlayıcısı"
+            "xml": {
+              "attribute": true
+            },
+            "description": "Palet ID"
           },
           "name": {
             "type": "string",
+            "xml": {
+              "name": "name"
+            },
             "description": "Palet adı"
           },
           "description": {
             "type": "string",
+            "xml": {
+              "name": "description"
+            },
             "description": "Palet açıklaması"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Oluşturulma tarihi"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Son güncelleme tarihi"
           }
         }
       }
@@ -78,29 +63,26 @@
   "paths": {
     "/palet": {
       "get": {
-        "summary": "Palet Listesi",
-        "description": "Kullanıcının erişim yetkisine sahip olduğu paletlerin listesini döndürür.",
-        "operationId": "listPalets",
+        "summary": "Palet Detayı",
+        "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür.",
+        "operationId": "getPalet",
         "parameters": [
           {
-            "name": "limit",
+            "name": "id",
             "in": "query",
-            "description": "Sayfa başına döndürülecek maksimum sonuç sayısı",
+            "required": true,
+            "description": "Palet ID",
             "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "maximum": 100,
-              "default": 20
+              "type": "string"
             }
           },
           {
-            "name": "offset",
+            "name": "apikey",
             "in": "query",
-            "description": "Sonuçların başlangıç noktası",
+            "required": true,
+            "description": "API Anahtarı (JWT Token)",
             "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 0
+              "type": "string"
             }
           }
         ],
@@ -108,28 +90,15 @@
           "200": {
             "description": "Başarılı",
             "content": {
-              "application/json": {
+              "application/xml": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Palet"
-                      }
-                    },
-                    "total": {
-                      "type": "integer",
-                      "description": "Toplam kayıt sayısı"
-                    },
-                    "limit": {
-                      "type": "integer",
-                      "description": "Sayfa başına kayıt sayısı"
-                    },
-                    "offset": {
-                      "type": "integer",
-                      "description": "Başlangıç noktası"
-                    }
+                  "$ref": "#/components/schemas/PaletResponse"
+                },
+                "example": {
+                  "palet": {
+                    "@id": "100000020",
+                    "name": "Örnek Palet",
+                    "description": "Örnek palet açıklaması"
                   }
                 }
               }
@@ -138,7 +107,7 @@
           "400": {
             "description": "Geçersiz istek",
             "content": {
-              "application/json": {
+              "application/xml": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -146,19 +115,19 @@
             }
           },
           "401": {
-            "description": "Yetkisiz erişim",
+            "description": "Geçersiz API anahtarı",
             "content": {
-              "application/json": {
+              "application/xml": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
               }
             }
           },
-          "403": {
-            "description": "Erişim reddedildi",
+          "404": {
+            "description": "Palet bulunamadı",
             "content": {
-              "application/json": {
+              "application/xml": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
