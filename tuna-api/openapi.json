@@ -29,32 +29,109 @@
           }
         }
       },
-      "PaletResponse": {
+      "Paletler": {
         "type": "object",
         "xml": {
-          "name": "palet"
+          "name": "Paletler"
         },
         "properties": {
-          "id": {
-            "type": "string",
+          "Palet": {
+            "type": "array",
             "xml": {
-              "attribute": true
+              "name": "Palet"
             },
-            "description": "Palet ID"
-          },
-          "name": {
-            "type": "string",
-            "xml": {
-              "name": "name"
-            },
-            "description": "Palet adı"
-          },
-          "description": {
-            "type": "string",
-            "xml": {
-              "name": "description"
-            },
-            "description": "Palet açıklaması"
+            "items": {
+              "type": "object",
+              "properties": {
+                "PaletQrId": {
+                  "type": "string",
+                  "xml": {
+                    "name": "PaletQrId"
+                  },
+                  "description": "Palet QR ID"
+                },
+                "Box": {
+                  "type": "array",
+                  "xml": {
+                    "name": "Box"
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "BoxQrId": {
+                        "type": "string",
+                        "xml": {
+                          "name": "BoxQrId"
+                        },
+                        "description": "Kutu QR ID"
+                      },
+                      "Tarih": {
+                        "type": "string",
+                        "xml": {
+                          "name": "Tarih"
+                        },
+                        "description": "Tarih"
+                      },
+                      "Barkod": {
+                        "type": "string",
+                        "xml": {
+                          "name": "Barkod"
+                        },
+                        "description": "Barkod"
+                      },
+                      "ISBN": {
+                        "type": "string",
+                        "xml": {
+                          "name": "ISBN"
+                        },
+                        "description": "ISBN"
+                      },
+                      "FirmaId": {
+                        "type": "string",
+                        "xml": {
+                          "name": "FirmaId"
+                        },
+                        "description": "Firma ID"
+                      },
+                      "Kitaplar": {
+                        "type": "object",
+                        "xml": {
+                          "name": "Kitaplar"
+                        },
+                        "properties": {
+                          "KitapAdi": {
+                            "type": "string",
+                            "xml": {
+                              "name": "KitapAdi"
+                            },
+                            "description": "Kitap Adı"
+                          },
+                          "Bandrols": {
+                            "type": "object",
+                            "xml": {
+                              "name": "Bandrols"
+                            },
+                            "properties": {
+                              "Bandrol": {
+                                "type": "array",
+                                "xml": {
+                                  "name": "Bandrol",
+                                  "wrapped": true
+                                },
+                                "items": {
+                                  "type": "string"
+                                },
+                                "description": "Bandrol listesi"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -92,13 +169,34 @@
             "content": {
               "application/xml": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaletResponse"
+                  "$ref": "#/components/schemas/Paletler"
                 },
                 "example": {
-                  "palet": {
-                    "@id": "100000020",
-                    "name": "Örnek Palet",
-                    "description": "Örnek palet açıklaması"
+                  "Paletler": {
+                    "Palet": [
+                      {
+                        "PaletQrId": "100000020",
+                        "Box": [
+                          {
+                            "BoxQrId": "1000002118",
+                            "Tarih": "17.05.2025",
+                            "Barkod": "9786056952708",
+                            "ISBN": "978-6056-952708",
+                            "FirmaId": "7289",
+                            "Kitaplar": {
+                              "KitapAdi": "MOZAİK 8. SINIF FEN BİLİMLERİ SORU BANKASI",
+                              "Bandrols": {
+                                "Bandrol": [
+                                  "0211441YNS",
+                                  "0211442YNS",
+                                  "0211460YNS"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
                   }
                 }
               }
