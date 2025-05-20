@@ -171,32 +171,11 @@
                 "schema": {
                   "$ref": "#/components/schemas/Paletler"
                 },
-                "example": {
-                  "Paletler": {
-                    "Palet": [
-                      {
-                        "PaletQrId": "100000020",
-                        "Box": [
-                          {
-                            "BoxQrId": "1000002118",
-                            "Tarih": "17.05.2025",
-                            "Barkod": "9786056952708",
-                            "ISBN": "978-6056-952708",
-                            "FirmaId": "7289",
-                            "Kitaplar": {
-                              "KitapAdi": "MOZAİK 8. SINIF FEN BİLİMLERİ SORU BANKASI",
-                              "Bandrols": {
-                                "Bandrol": [
-                                  "0211441YNS",
-                                  "0211442YNS",
-                                  "0211460YNS"
-                                ]
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    ]
+                "examples": {
+                  "xml-response": {
+                    "summary": "Örnek XML Yanıtı",
+                    "description": "Palet detaylarını içeren XML yanıtı",
+                    "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Paletler>\n  <Palet>\n    <PaletQrId>100000020</PaletQrId>\n    <Box>\n      <BoxQrId>1000002118</BoxQrId>\n      <Tarih>17.05.2025</Tarih>\n      <Barkod>9786056952708</Barkod>\n      <ISBN>978-6056-952708</ISBN>\n      <FirmaId>7289</FirmaId>\n      <Kitaplar>\n        <KitapAdi>MOZAİK 8. SINIF FEN BİLİMLERİ SORU BANKASI</KitapAdi>\n        <Bandrols>\n          <Bandrol>0211441YNS</Bandrol>\n          <Bandrol>0211442YNS</Bandrol>\n          <Bandrol>0211460YNS</Bandrol>\n        </Bandrols>\n      </Kitaplar>\n    </Box>\n  </Palet>\n</Paletler>"
                   }
                 }
               }
