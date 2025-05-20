@@ -42,7 +42,7 @@
         "type": "object",
         "xml": {
           "name": "Paletler",
-          "namespace": "https://api.tunamatbaacilik.com.tr"
+          "namespace": "http://tunamatbaacilik.com.tr/api"
         },
         "properties": {
           "Palet": {
@@ -155,12 +155,6 @@
         "summary": "Palet Detayı",
         "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür.",
         "operationId": "getPalet",
-        "x-mintlify": {
-          "hiddenParameters": ["docs"],
-          "defaultParameters": {
-            "docs": "true"
-          }
-        },
         "parameters": [
           {
             "name": "id",

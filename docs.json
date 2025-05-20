@@ -78,5 +78,14 @@
     "socials": {
       "linkedin": "https://linkedin.com/company/sunucupark"
     }
+  },
+  "api": {
+    "baseUrl": "https://api.tunamatbaacilik.com.tr",
+    "playground": {
+      "mode": "show",
+      "defaultParameters": {
+        "docs": "true"
+      }
+    }
   }
 }
