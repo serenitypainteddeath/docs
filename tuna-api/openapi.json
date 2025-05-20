@@ -171,13 +171,57 @@
                 "schema": {
                   "$ref": "#/components/schemas/Paletler"
                 },
-                "examples": {
-                  "xml-response": {
-                    "summary": "Örnek XML Yanıtı",
-                    "description": "Palet detaylarını içeren XML yanıtı",
-                    "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Paletler>\n  <Palet>\n    <PaletQrId>100000020</PaletQrId>\n    <Box>\n      <BoxQrId>1000002118</BoxQrId>\n      <Tarih>17.05.2025</Tarih>\n      <Barkod>9786056952708</Barkod>\n      <ISBN>978-6056-952708</ISBN>\n      <FirmaId>7289</FirmaId>\n      <Kitaplar>\n        <KitapAdi>MOZAİK 8. SINIF FEN BİLİMLERİ SORU BANKASI</KitapAdi>\n        <Bandrols>\n          <Bandrol>0211441YNS</Bandrol>\n          <Bandrol>0211442YNS</Bandrol>\n          <Bandrol>0211460YNS</Bandrol>\n        </Bandrols>\n      </Kitaplar>\n    </Box>\n  </Palet>\n</Paletler>"
-                  }
-                }
+                "example": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+                  "",
+                  "<Paletler>",
+                  "",
+                  "    <Palet>",
+                  "        <PaletQrId>123456789</PaletQrId>",
+                  "",
+                  "        <Box>",
+                  "            <BoxQrId>987654321</BoxQrId>",
+                  "            <Tarih>01.01.2024</Tarih>",
+                  "            <Barkod>9780000000000</Barkod>",
+                  "            <ISBN>978-0000-000000</ISBN>",
+                  "            <FirmaId>1234</FirmaId>",
+                  "",
+                  "            <Kitaplar>",
+                  "                <KitapAdi>ÖRNEK KİTAP ADI</KitapAdi>",
+                  "",
+                  "                <Bandrols>",
+                  "                    <Bandrol>0000001XXX</Bandrol>",
+                  "                    <Bandrol>0000002XXX</Bandrol>",
+                  "                    <Bandrol>0000003XXX</Bandrol>",
+                  "                    <Bandrol>0000004XXX</Bandrol>",
+                  "                    <Bandrol>0000005XXX</Bandrol>",
+                  "                </Bandrols>",
+                  "            </Kitaplar>",
+                  "        </Box>",
+                  "",
+                  "        <Box>",
+                  "            <BoxQrId>987654322</BoxQrId>",
+                  "            <Tarih>01.01.2024</Tarih>",
+                  "            <Barkod>9780000000000</Barkod>",
+                  "            <ISBN>978-0000-000000</ISBN>",
+                  "            <FirmaId>1234</FirmaId>",
+                  "",
+                  "            <Kitaplar>",
+                  "                <KitapAdi>ÖRNEK KİTAP ADI</KitapAdi>",
+                  "",
+                  "                <Bandrols>",
+                  "                    <Bandrol>0000006XXX</Bandrol>",
+                  "                    <Bandrol>0000007XXX</Bandrol>",
+                  "                    <Bandrol>0000008XXX</Bandrol>",
+                  "                    <Bandrol>0000009XXX</Bandrol>",
+                  "                    <Bandrol>0000010XXX</Bandrol>",
+                  "                </Bandrols>",
+                  "            </Kitaplar>",
+                  "        </Box>",
+                  "    </Palet>",
+                  "",
+                  "</Paletler>"
+                ]
               }
             }
           },
