@@ -15,5 +15,5 @@ Matbaa API endpointlerinin kullanımı için kimlik doğrulama gereklidir. Bu ne
 API’yi kullanmaya başlamadan önce, temel kimlik doğrulaması (basicAuth) ile `/login` endpoint’ine GET isteği yaparak JWT token’ı almanız gerekir. Bu token, diğer tüm API çağrılarında kullanılacaktır.
 
 ```cURL cURL
-curl -X GET "https://api.tunamatbaacilik.com.tr/login?{username}&password={password}"
+curl -X GET "https://api.tunamatbaacilik.com.tr/login?username={username}&password={password}"
 ```
