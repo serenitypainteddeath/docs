@@ -18,13 +18,22 @@
     "schemas": {
       "Error": {
         "type": "object",
+        "xml": {
+          "name": "Error"
+        },
         "properties": {
           "code": {
             "type": "string",
+            "xml": {
+              "name": "Code"
+            },
             "description": "Hata kodu"
           },
           "message": {
             "type": "string",
+            "xml": {
+              "name": "Message"
+            },
             "description": "Hata mesajı"
           }
         }
@@ -32,13 +41,15 @@
       "Paletler": {
         "type": "object",
         "xml": {
-          "name": "Paletler"
+          "name": "Paletler",
+          "namespace": "http://tunamatbaacilik.com.tr/api"
         },
         "properties": {
           "Palet": {
             "type": "array",
             "xml": {
-              "name": "Palet"
+              "name": "Palet",
+              "wrapped": true
             },
             "items": {
               "type": "object",
@@ -53,7 +64,8 @@
                 "Box": {
                   "type": "array",
                   "xml": {
-                    "name": "Box"
+                    "name": "Box",
+                    "wrapped": true
                   },
                   "items": {
                     "type": "object",
@@ -171,7 +183,7 @@
                 "schema": {
                   "$ref": "#/components/schemas/Paletler"
                 },
-                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Paletler><Palet><PaletQrId>123456789</PaletQrId><Box><BoxQrId>987654321</BoxQrId><Tarih>01.01.2024</Tarih><Barkod>9780000000000</Barkod><ISBN>978-0000-000000</ISBN><FirmaId>1234</FirmaId><Kitaplar><KitapAdi>ÖRNEK KİTAP ADI</KitapAdi><Bandrols><Bandrol>0000001XXX</Bandrol><Bandrol>0000002XXX</Bandrol><Bandrol>0000003XXX</Bandrol><Bandrol>0000004XXX</Bandrol><Bandrol>0000005XXX</Bandrol></Bandrols></Kitaplar></Box><Box><BoxQrId>987654322</BoxQrId><Tarih>01.01.2024</Tarih><Barkod>9780000000000</Barkod><ISBN>978-0000-000000</ISBN><FirmaId>1234</FirmaId><Kitaplar><KitapAdi>ÖRNEK KİTAP ADI</KitapAdi><Bandrols><Bandrol>0000006XXX</Bandrol><Bandrol>0000007XXX</Bandrol><Bandrol>0000008XXX</Bandrol><Bandrol>0000009XXX</Bandrol><Bandrol>0000010XXX</Bandrol></Bandrols></Kitaplar></Box></Palet></Paletler>"
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Paletler xmlns=\"http://tunamatbaacilik.com.tr/api\"><Palet><PaletQrId>123456789</PaletQrId><Box><BoxQrId>987654321</BoxQrId><Tarih>01.01.2024</Tarih><Barkod>9780000000000</Barkod><ISBN>978-0000-000000</ISBN><FirmaId>1234</FirmaId><Kitaplar><KitapAdi>ÖRNEK KİTAP ADI</KitapAdi><Bandrols><Bandrol>0000001XXX</Bandrol><Bandrol>0000002XXX</Bandrol><Bandrol>0000003XXX</Bandrol><Bandrol>0000004XXX</Bandrol><Bandrol>0000005XXX</Bandrol></Bandrols></Kitaplar></Box><Box><BoxQrId>987654322</BoxQrId><Tarih>01.01.2024</Tarih><Barkod>9780000000000</Barkod><ISBN>978-0000-000000</ISBN><FirmaId>1234</FirmaId><Kitaplar><KitapAdi>ÖRNEK KİTAP ADI</KitapAdi><Bandrols><Bandrol>0000006XXX</Bandrol><Bandrol>0000007XXX</Bandrol><Bandrol>0000008XXX</Bandrol><Bandrol>0000009XXX</Bandrol><Bandrol>0000010XXX</Bandrol></Bandrols></Kitaplar></Box></Palet></Paletler>"
               }
             }
           },
