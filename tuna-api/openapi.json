@@ -1,16 +1,21 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Tuna Matbaa API",
+    "description": "Tuna Matbaa'nın resmi API dokümantasyonu. Bu API, matbaa işlemlerinizi programatik olarak yönetmenizi sağlar.",
     "license": {
-      "name": "MIT"
+      "name": "Proprietary"
     },
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://api.tunamatbaacilik.com.tr"
+      "url": "https://api.tunamatbaacilik.com.tr/v1",
+      "description": "Production API"
+    },
+    {
+      "url": "https://staging-api.tunamatbaacilik.com.tr/v1",
+      "description": "Staging API"
     }
   ],
   "security": [
@@ -18,37 +23,140 @@
       "bearerAuth": []
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Hata kodu"
+          },
+          "message": {
+            "type": "string",
+            "description": "Hata mesajı"
+          }
+        }
+      },
+      "Palet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Palet benzersiz tanımlayıcısı"
+          },
+          "name": {
+            "type": "string",
+            "description": "Palet adı"
+          },
+          "description": {
+            "type": "string",
+            "description": "Palet açıklaması"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Oluşturulma tarihi"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Son güncelleme tarihi"
+          }
+        }
+      }
+    }
+  },
   "paths": {
     "/palet": {
       "get": {
-        "description": "Kullanıcının erişim yetkisine sahip olduğu paletler arasında belirttiği ID'ye göre bir paleti kullanıcıya geri döner.",
+        "summary": "Palet Listesi",
+        "description": "Kullanıcının erişim yetkisine sahip olduğu paletlerin listesini döndürür.",
+        "operationId": "listPalets",
         "parameters": [
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "Sayfa başına döndürülecek maksimum sonuç sayısı",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Sonuçların başlangıç noktası",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Palet Response",
+            "description": "Başarılı",
             "content": {
-              "application/xml": {
+              "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Palet"
+                      }
+                    },
+                    "total": {
+                      "type": "integer",
+                      "description": "Toplam kayıt sayısı"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "description": "Sayfa başına kayıt sayısı"
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "description": "Başlangıç noktası"
+                    }
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Unexpected error",
+            "description": "Geçersiz istek",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Yetkisiz erişim",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Erişim reddedildi",
             "content": {
               "application/json": {
                 "schema": {
@@ -58,7 +166,7 @@
             }
           }
         }
-      },
+      }
     }
   }
 }
