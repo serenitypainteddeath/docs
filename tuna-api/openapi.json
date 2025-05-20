@@ -153,7 +153,7 @@
     "/palet": {
       "get": {
         "summary": "Palet Detayı",
-        "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür.",
+        "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür. Test için aşağıdaki 'Try it' butonuna tıklayıp görebilirsiniz. Test için PaletQrId ve API anahtarını 1 girin.",
         "operationId": "getPalet",
         "parameters": [
           {
