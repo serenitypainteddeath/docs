@@ -250,6 +250,84 @@
             "description": "JWT token"
           }
         }
+      },
+      "Box": {
+        "type": "object",
+        "xml": {
+          "name": "Box",
+          "namespace": "http://apitest.tunamatbaacilik.com.tr"
+        },
+        "properties": {
+          "BoxQrId": {
+            "type": "string",
+            "xml": {
+              "name": "BoxQrId"
+            },
+            "description": "Kutu QR ID"
+          },
+          "Tarih": {
+            "type": "string",
+            "xml": {
+              "name": "Tarih"
+            },
+            "description": "Tarih"
+          },
+          "Barkod": {
+            "type": "string",
+            "xml": {
+              "name": "Barkod"
+            },
+            "description": "Barkod"
+          },
+          "ISBN": {
+            "type": "string",
+            "xml": {
+              "name": "ISBN"
+            },
+            "description": "ISBN"
+          },
+          "FirmaId": {
+            "type": "string",
+            "xml": {
+              "name": "FirmaId"
+            },
+            "description": "Firma ID"
+          },
+          "Kitaplar": {
+            "type": "object",
+            "xml": {
+              "name": "Kitaplar"
+            },
+            "properties": {
+              "KitapAdi": {
+                "type": "string",
+                "xml": {
+                  "name": "KitapAdi"
+                },
+                "description": "Kitap Adı"
+              },
+              "Bandrols": {
+                "type": "object",
+                "xml": {
+                  "name": "Bandrols"
+                },
+                "properties": {
+                  "Bandrol": {
+                    "type": "array",
+                    "xml": {
+                      "name": "Bandrol",
+                      "wrapped": true
+                    },
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Bandrol listesi"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -391,6 +469,76 @@
                   "$ref": "#/components/schemas/AuthNotFoundError"
                 },
                 "example": "API_ERROR^Geçersiz istek"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/box": {
+      "get": {
+        "summary": "Kutu Detayı",
+        "description": "Belirtilen ID'ye sahip kutunun detaylarını döndürür.",
+        "operationId": "getBox",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "Kutu ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "apikey",
+            "in": "query",
+            "required": true,
+            "description": "API Anahtarı (JWT Token)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Başarılı",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Box"
+                },
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Box xmlns=\"http://tunamatbaacilik.com.tr/api\"><BoxQrId>987654321</BoxQrId><Tarih>01.01.2024</Tarih><Barkod>9780000000000</Barkod><ISBN>978-0000-000000</ISBN><FirmaId>1234</FirmaId><Kitaplar><KitapAdi>ÖRNEK KİTAP ADI</KitapAdi><Bandrols><Bandrol>0000001XXX</Bandrol><Bandrol>0000002XXX</Bandrol><Bandrol>0000003XXX</Bandrol><Bandrol>0000004XXX</Bandrol><Bandrol>0000005XXX</Bandrol></Bandrols></Kitaplar></Box>"
+              }
+            }
+          },
+          "400": {
+            "description": "Geçersiz istek",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Geçersiz API anahtarı",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Kutu bulunamadı",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
