@@ -33,7 +33,7 @@
           {
             "group": "İstekler",
             "pages": [
-              "tuna-api/endpoint/authentication",
+              "tuna-api/endpoint/getApiKey",
               "tuna-api/endpoint/getPalet",
               "tuna-api/endpoint/getBox"
             ]
