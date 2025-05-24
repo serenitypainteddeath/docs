@@ -149,16 +149,86 @@
       },
       "AuthError": {
         "type": "object",
-        "xml": {
-          "name": "Error"
-        },
         "properties": {
+          "status": {
+            "type": "string",
+            "description": "Hata durumu (API_ERROR)",
+            "example": "API_ERROR"
+          },
           "message": {
             "type": "string",
-            "xml": {
-              "name": "Message"
-            },
-            "description": "Örnek Dönüş: API_ERROR^Kullanıcı adı ve parola belirtmelisiniz."
+            "description": "Hata mesajı",
+            "example": "Kullanıcı adı ve parola belirtmelisiniz."
+          }
+        },
+        "example": {
+          "status": "API_ERROR",
+          "message": "Kullanıcı adı ve parola belirtmelisiniz."
+        }
+      },
+      "AuthValidationError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Hata durumu (API_ERROR)",
+            "example": "API_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "description": "Validasyon hatası mesajı",
+            "example": "Kullanıcı adı ve parola belirtmelisiniz."
+          }
+        },
+        "example": {
+          "status": "API_ERROR",
+          "message": "Kullanıcı adı ve parola belirtmelisiniz."
+        }
+      },
+      "AuthUnauthorizedError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Hata durumu (API_ERROR)",
+            "example": "API_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "description": "Yetkilendirme hatası mesajı",
+            "example": "Kullanıcı adı veya parola hatalı"
+          }
+        },
+        "example": {
+          "status": "API_ERROR",
+          "message": "Kullanıcı adı veya parola hatalı"
+        }
+      },
+      "AuthNotFoundError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Hata durumu (API_ERROR)",
+            "example": "API_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "description": "Bulunamadı hatası mesajı",
+            "example": "Geçersiz istek"
+          }
+        },
+        "example": {
+          "status": "API_ERROR",
+          "message": "Geçersiz istek"
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "JWT token"
           }
         }
       }
@@ -238,7 +308,7 @@
     "/login": {
       "get": {
         "summary": "Authentication",
-        "description": "Login olarak 60 dakika geçerli token alabilirsiniz..",
+        "description": "Login olarak 60 dakika geçerli token alabilirsiniz.",
         "operationId": "getApiKey",
         "parameters": [
           {
@@ -264,41 +334,44 @@
           "200": {
             "description": "Başarılı",
             "content": {
-              "application/xml": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Paletler"
-                },
-                "example": "API_OK^f5c46f793e07c46fd49884b107e9bb2462fcaeabebc63a4e7923c9edb059e673"
+                  "type": "string",
+                  "example": "API_OK^f5c46f793e07c46fd49884b107e9bb2462fcaeabebc63a4e7923c9edb059e673"
+                }
               }
             }
           },
           "400": {
             "description": "Kullanıcı adı ve parola belirtmelisiniz.",
             "content": {
-              "application/xml": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthError/properties/message"
-                }
+                  "$ref": "#/components/schemas/AuthValidationError"
+                },
+                "example": "API_ERROR^Kullanıcı adı ve parola belirtmelisiniz."
               }
             }
           },
           "401": {
             "description": "Kullanıcı adı veya parola hatalı",
             "content": {
-              "application/xml": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
+                  "$ref": "#/components/schemas/AuthUnauthorizedError"
+                },
+                "example": "API_ERROR^Kullanıcı adı veya parola hatalı"
               }
             }
           },
           "404": {
             "description": "Geçersiz istek",
             "content": {
-              "application/xml": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error/"
-                }
+                  "$ref": "#/components/schemas/AuthNotFoundError"
+                },
+                "example": "API_ERROR^Geçersiz istek"
               }
             }
           }
