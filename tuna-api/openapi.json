@@ -335,8 +335,7 @@
     "/palet": {
       "get": {
         "summary": "Palet Detayı",
-        "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür.",
-        "operationId": "getPalet",
+        "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür.\n\nTest için kullanabileceğiniz kullanıcı bilgileri:\n- Palet ID: 1\n- API Key: Önce /login endpoint'ini kullanarak token alınır eğer alındıysa direkt kullanılabilir.",        "operationId": "getPalet",
         "parameters": [
           {
             "name": "id",
