@@ -220,5 +220,76 @@
         }
       }
     }
+    "/login": {
+      "get": {
+        "summary": "Authentication",
+        "description": "Login olarak 60 dakika geçerli token alabilirsiniz..",
+        "operationId": "getApiKey",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "description": "Firma Kullanıcı Adı",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "description": "Şifreniz",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Başarılı",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paletler"
+                },
+                "example": "API_OK^f5c46f793e07c46fd49884b107e9bb2462fcaeabebc63a4e7923c9edb059e673"
+              }
+            }
+          },
+          "400": {
+            "description": "Kullanıcı adı ve parola belirtmelisiniz.",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Kullanıcı adı veya parola hatalı",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Geçersiz istek",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    }
   }
 }
