@@ -477,17 +477,17 @@
     },
     "/box": {
       "get": {
-        "summary": "Kutu Detayı",
-        "description": "Belirtilen ID'ye sahip kutunun detaylarını döndürür.",
+        "summary": "Kutu İçeriği",
+        "description": "Belirtilen ID'ye sahip kutu içeriğini döndürür.",
         "operationId": "getBox",
         "parameters": [
           {
             "name": "id",
             "in": "query",
             "required": true,
-            "description": "Kutu ID",
+            "description": "Box Qr ID",
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           },
           {
