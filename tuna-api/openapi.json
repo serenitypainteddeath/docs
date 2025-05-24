@@ -334,14 +334,15 @@
   "paths": {
     "/palet": {
       "get": {
-        "summary": "Palet Detayı",
-        "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür.\n\nTest için kullanabileceğiniz kullanıcı bilgileri:\n- Palet ID: 1\n- API Key: Önce /login endpoint'ini kullanarak token alınır eğer alındıysa direkt kullanılabilir.",        "operationId": "getPalet",
+        "summary": "Palet İçeriği",
+          "description": "Belirtilen ID'ye sahip paletin detaylarını döndürür.\n\nTest için kullanabileceğiniz kullanıcı bilgileri:\n- Palet ID: 1\n- API Key: Önce /login endpoint'ini kullanarak token alınır eğer alındıysa direkt kullanılabilir.",
+        "operationId": "getPalet",
         "parameters": [
           {
             "name": "id",
             "in": "query",
             "required": true,
-            "description": "Palet ID",
+            "description": "Palet Qr ID",
             "schema": {
               "type": "string"
             }
@@ -477,7 +478,7 @@
     "/box": {
       "get": {
         "summary": "Kutu İçeriği",
-        "description": "Belirtilen ID'ye sahip kutu içeriğini döndürür.",
+        "description": "Belirtilen ID'ye sahip kutunun içeriğini döndürür.\n\nTest için kullanabileceğiniz kullanıcı bilgileri:\n- Box Qr ID: 1\n- API Key: Önce /login endpoint'ini kullanarak token alınır eğer alındıysa direkt kullanılabilir.",
         "operationId": "getBox",
         "parameters": [
           {
