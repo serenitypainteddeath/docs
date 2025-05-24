@@ -34,7 +34,7 @@
           {
             "group": "İstekler",
             "pages": [
-              "tuna-api/endpoint/getPalet",
+              "tuna-api/palet-search",
               "tuna-api/endpoint/getBox",
               "tuna-api/endpoint/getbyDate"
             ]
