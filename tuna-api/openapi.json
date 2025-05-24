@@ -327,7 +327,7 @@
     "/login": {
       "get": {
         "summary": "Authentication",
-        "description": "Login olarak 60 dakika geçerli token alabilirsiniz.",
+        "description": "Login olarak 60 dakika geçerli token alabilirsiniz.\n\nTest için kullanabileceğiniz kullanıcı bilgileri:\n- Kullanıcı Adı: sunucupark\n- Şifre: sunucupark",
         "operationId": "getApiKey",
         "parameters": [
           {
