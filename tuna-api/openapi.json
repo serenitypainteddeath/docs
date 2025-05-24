@@ -146,6 +146,21 @@
             }
           }
         }
+      },
+      "AuthError": {
+        "type": "object",
+        "xml": {
+          "name": "Error"
+        },
+        "properties": {
+          "message": {
+            "type": "string",
+            "xml": {
+              "name": "Message"
+            },
+            "description": "Örnek Dönüş: API_ERROR^Kullanıcı adı ve parola belirtmelisiniz."
+          }
+        }
       }
     }
   },
@@ -262,7 +277,7 @@
             "content": {
               "application/xml": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/AuthError/properties/message"
                 }
               }
             }
@@ -282,7 +297,7 @@
             "content": {
               "application/xml": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/Error/"
                 }
               }
             }
