@@ -223,6 +223,25 @@
           "message": "Geçersiz istek"
         }
       },
+      "AuthOkey": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Başarılı durum (API_OK)",
+            "example": "API_OK"
+          },
+          "token": {
+            "type": "string",
+            "description": "JWT token",
+            "example": "f5c46f793e07c46fd49884b107e9bb2462fcaeabebc63a4e7923c9edb059e673"
+          }
+        },
+        "example": {
+          "status": "API_OK",
+          "token": "f5c46f793e07c46fd49884b107e9bb2462fcaeabebc63a4e7923c9edb059e673"
+        }
+      },
       "LoginResponse": {
         "type": "object",
         "properties": {
@@ -336,9 +355,9 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "string",
-                  "example": "API_OK^f5c46f793e07c46fd49884b107e9bb2462fcaeabebc63a4e7923c9edb059e673"
-                }
+                  "$ref": "#/components/schemas/AuthOkey"
+                },
+                "example": "API_OK^f5c46f793e07c46fd49884b107e9bb2462fcaeabebc63a4e7923c9edb059e673"
               }
             }
           },
