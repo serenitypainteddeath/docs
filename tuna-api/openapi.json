@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://api.tunamatbaacilik.com.tr",
+      "url": "https://apitest.tunamatbaacilik.com.tr",
       "description": "Production API"
     }
   ],
@@ -42,7 +42,7 @@
         "type": "object",
         "xml": {
           "name": "Paletler",
-          "namespace": "http://tunamatbaacilik.com.tr/api"
+          "namespace": "http://apitest.tunamatbaacilik.com.tr"
         },
         "properties": {
           "Palet": {
